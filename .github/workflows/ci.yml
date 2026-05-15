@@ -124,3 +124,19 @@ jobs:
         run: |
           cp .env.prod .env
           echo "Deploying to PROD with .env.prod"
+  notify:
+    name: Notify maintainers
+    runs-on: ubuntu-latest
+    needs: [tests, phpstan, lint, deploy-dev, deploy-uat, deploy-prod]
+    if: always()
+
+    steps:
+      - name: Show pipeline result
+        run: |
+          echo "Maintainers notification"
+          echo "Tests: ${{ needs.tests.result }}"
+          echo "PHPStan: ${{ needs.phpstan.result }}"
+          echo "Lint: ${{ needs.lint.result }}"
+          echo "Deploy DEV: ${{ needs.deploy-dev.result }}"
+          echo "Deploy UAT: ${{ needs.deploy-uat.result }}"
+          echo "Deploy PROD: ${{ needs.deploy-prod.result }}"

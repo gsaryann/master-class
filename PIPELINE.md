@@ -56,6 +56,14 @@ vendor/bin/pint
 
 Для production используется GitHub Environment `production`, где нужно включить ручной approve через Required reviewers.
 
+5. Notify maintainers
+
+После завершения основных шагов выводится сообщение с результатами jobs для maintainers:
+
+```bash
+Maintainers notification
+```
+
 ## Файлы окружений
 
 - `.env.dev`
