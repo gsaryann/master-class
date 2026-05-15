@@ -67,7 +67,7 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
-    public function isMaster(): bool
+    public function isMaster(  ): bool
     {
         return $this->role === self::ROLE_MASTER;
     }
